@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman Game</title>
+
+<style type="text/css"> 
+
+div#game_board {
+border:#999 2px solid;
+width:900px;
+height:100px;
+padding:24px;
+background: #ccc;
+}
+
+div#game_board > div {
+border :#000 2px solid;
+width: 60px;
+height: 60px;
+float:left;
+margin: 10px;
+padding: 20px;
+font-size: 60px;
+cursor: pointer;
+text-align: center;
+}
+
+
+</style>
+    <script type="text/javascript">
+
+        // declare variable for players
+        var memory_value = [];
+        var memory_tile_id = [];
+        var tiles_flipped =0;
+        var s;
+        var answer =[];
+        
+// shuffle words 
+        var computerChoice = Math.random();
+        if (computerChoice > 0.0 && computerChoice < 0.1) {
+            computerChoice = "hammer";
+        var gname =['H','A','M','M','E','R'];    
+        } else if (computerChoice > 0.1 && computerChoice < 0.2) {
+            computerChoice = "paper";
+            var gname =['P','A','P','E','R'];
+         ////  var this[5];
+        } else if (computerChoice > 0.2 && computerChoice < 0.3) { 
+            computerChoice = "scissor";
+            var gname =['S','C','I','S','S','O','R'];
+          //  var this[7];
+        } else if (computerChoice > 0.3 && computerChoice < 0.4) { 
+            computerChoice = "window";
+            var gname =['W','I','N','D','O','W'];
+        //    var  this[6];
+        } else if (computerChoice > 0.4 && computerChoice < 0.5) { 
+            computerChoice = "pencil";
+            var gname =['P','E','N','C','I','L'];
+         //   var this[6];
+        } else if (computerChoice > 0.5 && computerChoice < 0.6) { 
+            computerChoice = "monkey";
+            var gname =['M','O','N','K','E','Y'];
+          //  var this[6];
+        } else if (computerChoice > 0.6 && computerChoice < 0.7) { 
+            computerChoice = "printer"; 
+            var gname =['P','R','I','N','T','E','R']; 
+           // var this[7];
+             } else if (computerChoice > 0.7 && computerChoice < 0.8) { 
+            computerChoice = "burgers"; 
+            var gname =['B','U','R','G','E','R','S']; 
+           // var this[7];
+        } else  {
+            computerChoice = "BUNNY";
+            var gname =['B','U','N','N','Y'];
+       }    
+console.log (computerChoice);
+        // compare player with computer choice
+
+console.log (this)
+function newboard(){
+    var output ="";
+    tiles_flipped=0;
+
+for(var i = 0; i < gname.length; i++) {
+
+        answer[i] = "____";
+  output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+gname[i]+'\')"></div>';
+}
+
+//output = answer.join("   ");
+
+
+console.log(output);
+document.getElementById('game_board').innerHTML = output;
+
+
+}
+     
+
+    function memoryFlipTile(tile,val){
+var x, text;
+
+console.log(val)
+x = document.getElementById("letterGuess").value;
+
+
+
+for(var k = 0; k < gname.length; k++) {
+
+if (x == gname[k])  {
+   console.log(gname[k]);
+
+
+   console.log(tile.innerHTML)
+//tile.style.background= #fff;
+tile.innerhtml=x;  //val;
+}
+} 
+}
+ //<!--alert (computerChoice);-->
+
+//document.getElementById("demo").innerhtml=answer.join("  ");
+    </script>
+</head>
+<body>
+<div id="game_board"></div>
+<script>newboard();</script>
+
+<input id="letterGuess">
+
+
+<button type="button" onclick="memoryFlipTile()">submit</button>
+
+<p id="demo"></p>
+
+ 
+</body>
+</html>
